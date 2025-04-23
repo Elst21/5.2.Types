@@ -4,28 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькулятор для взрослых</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto p-6">
-        <h1 class="text-4xl font-bold text-center mb-5">Калькулятор для взрослых</h1>
-        
-        <div class="flex flex-col items-center">
-            <input type="number" id="num1" placeholder="Введите первое число" class="border rounded p-2 mb-4 w-64">
-            <input type="number" id="num2" placeholder="Введите второе число" class="border rounded p-2 mb-4 w-64">
-
-            <select id="operator" class="border rounded p-2 mb-4 w-64">
-                <option value="+">+</option>
-                <option value="-">-</option>
-                <option value="*">*</option>
-                <option value="/">/</option>
-            </select>
-
-            <button id="calculateButton" class="bg-blue-500 text-white rounded py-2 px-4">Рассчитать</button>
-
-            <p id="result" class="mt-4 text-xl"></p>
-        </div>
+<body>
+    <div class="calculator">
+        <h1>Калькулятор</h1>
+        <input type="number" id="number1" placeholder="Введите первое число">
+        <input type="number" id="number2" placeholder="Введите второе число">
+        <select id="operation">
+            <option value="add">Сложение</option>
+            <option value="subtract">Вычитание</option>
+            <option value="divide">Деление</option>
+            <option value="multiply">Умножение</option>
+        </select>
+        <button onclick="performCalculation()">Рассчитать</button>
+          <p id="result"> Результат:</p>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

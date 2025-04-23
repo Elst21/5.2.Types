@@ -1,49 +1,57 @@
-// Получаем элементы из DOM
-const calculateButton = document.getElementById('calculateButton');
-const num1Input = document.getElementById('num1');
-const num2Input = document.getElementById('num2');
-const operatorSelect = document.getElementById('operator');
-const resultParagraph = document.getElementById('result');
+function add(a, b) {
+    return a + b;
+}
+function subtract(a, b) {
+    return a-b;
+}
+function divide(a, b) {
+    if (b === 0) {
+        return "Ошибка: Деление на ноль невозможно.";
+     }
+     return a / b;
+}
+function multiply(a, b) {
+    return a * b;
+}
 
-// Функция для выполнения вычислений
-calculateButton.addEventListener('click', () => {
+function performCalculation() {
     // Получаем значения из полей ввода
-    const num1 = parseFloat(num1Input.value);
-    const num2 = parseFloat(num2Input.value);
-    const operator = operatorSelect.value;
-
-    // Проверка на NaN (не число)
-    if (isNaN(num1) || isNaN(num2)) {
-        resultParagraph.textContent = "Введите корректные числа!";
-        return;
-    }
+    const number1 = parseFloat(document.getElementById('number1').value);
+    const number2 = parseFloat(document.getElementById('number2').value);
+    const operation = document.getElementById('operation').value;
+    const resultElement = document.getElementById('result');
 
     let result;
 
-    // Выполнение операции в зависимости от выбранного оператора
-    switch (operator) {
-        case '+':
-            result = num1 + num2;
+    // Проверяем, что введены корректные числа
+    if (isNaN(number1) || isNaN(number2)) {
+        resultElement.textContent = "Ошибка: введите корректные числа!";
+        return;
+    }
+
+    // Выполнение операции в зависимости от выбранного значения
+    switch (operation) {
+        case 'add':
+            result = number1 + number2;
             break;
-        case '-':
-            result = num1 - num2;
+        case 'subtract':
+            result = number1 - number2;
             break;
-        case '*':
-            result = num1 * num2;
+        case 'multiply':
+            result = number1 * number2;
             break;
-        case '/':
-            // Проверка на деление на ноль
-            if (num2 === 0) {
-                resultParagraph.textContent = "Ошибка: деление на ноль!";
+        case 'divide':
+            if (number2 === 0) {
+                resultElement.textContent = "Ошибка: деление на ноль!";
                 return;
             }
-            result = num1 / num2;
+            result = number1 / number2;
             break;
         default:
-            resultParagraph.textContent = "Неизвестный оператор!";
+            resultElement.textContent = "Ошибка: неизвестная операция!";
             return;
     }
 
-    // Выводим результат на страницу
-    resultParagraph.textContent = `Результат: ${result}`;
-});
+    // Отображаем результат на странице
+    resultElement.textContent = `Результат: ${result}`;
+}
